@@ -21,7 +21,7 @@
 
 ### 实机验证记录
 
-被测页面是「今日水印相机」`com.xhey.xcamera` 的去水印结果页
+被测页面是「某相机」`com.xhey.xcamera` 的去水印结果页
 `com.xhey.xcamera/.ui.edit.RevertWaterMarkActivity`——它只在**这一个页面**给窗口加了 `FLAG_SECURE`，
 同 App 的 `EditActivity` / `GeneralActivity` / `PreviewActivity` 都没有。
 
