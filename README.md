@@ -21,39 +21,13 @@
 
 ### 实机验证记录
 
-被测页面是「某相机」`com.xxx.xxx` 的去水印结果页
-`com.xxx.xxx/.ui.edit.RevertWaterMarkActivity`——它只在**这一个页面**给窗口加了 `FLAG_SECURE`，
-同 App 的 `EditActivity` / `GeneralActivity` / `PreviewActivity` 都没有。
-
-修复前：
-
-```
-# 窗口确实带保护
-fl=LAYOUT_IN_SCREEN FULLSCREEN SECURE LAYOUT_INSET_DECOR ...
-
-# SurfaceFlinger 图层被标记为安全
-Layer [1988] (Secure) ff2095c com.xxx.xxx/...RevertWaterMarkActivity#1988
-      isSecure=true
-
-# 系统截图 App 拿到空 bitmap，截图直接中止、不落盘
-[Longshot][SurfaceControlCompat::screenshot]: spend:13ms.
-[Longshot][ImplCapture]: ImplCapture ERROR : bitmap is null
-[Longshot][TaskCapture]: Capture bitmap=null
-```
-
-修复后：
-
-```
-# 图层不再带 (Secure)
-Layer [209] fd24389 com.xxx.xxx/...RevertWaterMarkActivity#209
-
-# 系统截图正常落盘，整页真实内容，无黑块
-Screenshot_2026-11-21-19-25-24-82_....jpg
-```
+项目记录显示，在 OnePlus 12（ColorOS 17 / Android 17）上，一处使用 `FLAG_SECURE` 的测试界面原本无法截图；启用 SecureFree 后，系统截图正常保存，画面无黑块。
 
 ---
 
-## 为什么不用 Enable Screenshot / DisableFlagSecure
+## 致谢与 Android 17 适配
+
+感谢 [Enable Screenshot / DisableFlagSecure](https://github.com/LSPosed/DisableFlagSecure) 项目的作者、维护者和贡献者为 Android 截图兼容性所做的开源工作。
 
 上游 [LSPosed/DisableFlagSecure](https://github.com/LSPosed/DisableFlagSecure) 最新仍是 **v5.0.1（2026-04-04）**，
 `v5.0.0` 才升到 Xposed API 101（对应 Android 16），**没有 Android 17 / API 102 的版本**。
