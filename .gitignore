@@ -1,0 +1,14 @@
+# build output
+build/
+out/
+
+# signing material -- never commit your own keystore
+*.keystore
+*.jks
+
+# editors / OS
+.vs/
+.idea/
+*.user
+Thumbs.db
+desktop.ini
