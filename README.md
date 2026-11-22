@@ -1,6 +1,6 @@
 # SecureFree
 
-**本模块有DeepSeek V4.1 Flash 1017制作**
+**本模块由DeepSeek V4.1 Flash 1017制作**
 **本页面由Codex编辑**
 **在 Android 17 上恢复被 `FLAG_SECURE` 保护的界面截图能力。**
 
